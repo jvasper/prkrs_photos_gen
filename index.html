@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <input v-model="autorName" type="text" placeholder="Ник автора" name="" id=""><br>
+        <textarea v-model="text" name="Text1" cols="40" rows="5" placeholder="Текст"></textarea><br>
+        <input type="file" @change="onImageChange" accept="image/*"><br>
+        <input type="range" name="" id="" v-model="textFontSize">
+        <label for="">Размер текста <input v-model="textFontSize" type="number"> </label><br>
+        <input max="500" type="range" name="" id="" v-model="textTopPos">
+        <label for="">Расстояние текста по высоте <input v-model="textTopPos" type="number"> </label><br>
+        <button @click="downloadImage">Скачать изображение</button>
+
+        <div class="ready_photo">
+            <div id="autor"> {{ autorName }} </div>
+            <p :style="{ fontSize: textFontSize + 'px', top: textTopPos + 'px' }" v-html="formattedText"></p> <!-- Здесь текст будет отображаться с переносами строк -->
+            <div id="autor_img" :style="{ backgroundImage: 'url(' + imageSrc + ')' }"></div>
+            <img id="logo" src="./Group 7.svg" alt="">
+        </div>
+    </div>
+    <script src="libs/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.9"></script>
+    <script src="index.js"></script>
+</body>
+</html>
