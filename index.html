@@ -8,15 +8,15 @@
 </head>
 <body>
     <div id="app">
-        <input v-model="autorName" type="text" placeholder="Ник автора" name="" id=""><br>
-        <textarea v-model="text" name="Text1" cols="40" rows="5" placeholder="Текст"></textarea><br>
-        <input type="file" @change="onImageChange" accept="image/*"><br>
-        <input type="range" name="" id="" v-model="textFontSize">
-        <label for="">Размер текста <input v-model="textFontSize" type="number"> </label><br>
-        <input max="500" type="range" name="" id="" v-model="textTopPos">
-        <label for="">Расстояние текста по высоте <input v-model="textTopPos" type="number"> </label><br>
+        <input @input="saveInfo" v-model="autorName" type="text" placeholder="Ник автора" name="" id=""><br>
+        <textarea @input="saveInfo" v-model="text" name="Text1" cols="40" rows="5" placeholder="Текст"></textarea><br>
+        <input @input="saveInfo" type="file" @change="onImageChange" accept="image/*"><br>
+        <input @input="saveInfo" type="range" name="" id="" v-model="textFontSize">
+        <label for="">Размер текста <input @input="saveInfo" v-model="textFontSize" type="number"> </label><br>
+        <input @input="saveInfo" max="500" type="range" name="" id="" v-model="textTopPos">
+        <label for="">Расстояние текста по высоте <input @input="saveInfo" v-model="textTopPos" type="number"> </label><br>
+        <button @click="resetSettings" >Сбросить настройки</button><br>
         <button @click="downloadImage">Скачать изображение</button>
-
         <div class="ready_photo">
             <div id="autor"> {{ autorName }} </div>
             <p :style="{ fontSize: textFontSize + 'px', top: textTopPos + 'px' }" v-html="formattedText"></p> <!-- Здесь текст будет отображаться с переносами строк -->
